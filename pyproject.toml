@@ -1,0 +1,53 @@
+[project]
+name = "cadastro"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Rogerio Campos",email = "rogerio.campos07@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<4.0"
+dependencies = [
+]
+
+[tool.poetry]
+packages = [{include = "cadastro", from = "src"}]
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.12.10"
+taskipy = "^1.14.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = [
+    ".git",".git-rewrite",".ipynb_checkpoints",".mypy_cache", ".pyenv",".pytest_cache",".pytype",
+    ".ruff_cache",".venv",".vscode","__pypackages__","_build","buck-out","build","dist","node_modules",
+    "site-packages","venv",
+]
+line-length = 79
+indent-width = 4
+extend-exclude = ['migrations']
+
+[tool.ruff.lint]
+extend-select = ["E501"]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.taskipy.tasks]
+check = "ruff check"
+fix-errors = "ruff check --fix"
+format = "ruff format"
+
+
+
+
+
+
